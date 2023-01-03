@@ -1,0 +1,76 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center max-w-full grid grid-flow-col auto-cols-fr">
+        <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-screen">
+            <h1 class="text-5xl font-bold">Your Subscriptions</h1>
+            <hr class="border-base-100 border-2">
+            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <br>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <!-- head -->
+                    <thead>
+                        <tr>
+                            <th>bookId</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <!-- <th>Publisher</th> -->
+                            <!-- <td>Publish Date</td> -->
+                            <th>You Paid</th>
+                            <th>Subscribed On</th>
+                            <th>Block Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let bookSubscription of allSubscribedBooks">
+                            <th>{{bookSubscription.book.bookId}}</th>
+                            <td><b class="text-info underline underline-offset-2 cursor-pointer" [routerLink]="'/bookInfo/' + bookSubscription.subscription.id">{{bookSubscription.book.title}}</b></td>
+                            <td>{{bookSubscription.book.category}}</td>
+                            <!-- <td>{{bookSubscription.book.publisher}}</td> -->
+                            <!-- <td>{{bookSubscription.book.publishedDate}}</td> -->
+                            <td><b>{{bookSubscription.book.price| currency:'INR'}} </b></td>
+                            <td><b>{{bookSubscription.subscription.subscriptionDate}}</b></td>
+                            <td><button class="btn btn-outline btn-warning" (click)="unsubscribe(bookSubscription.book.bookId)" [disabled]="isSubscriptionDatePost24Hours(bookSubscription.subscription.subscriptionDate)"><b>UnSubscribe</b></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-screen">
+            <h1 class="text-5xl font-bold">All Books</h1>
+            <hr class="border-base-100 border-2">
+            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <br>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <!-- head -->
+                    <thead>
+                        <tr>
+                            <th>bookId</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <!-- <th>Publisher</th> -->
+                            <td>Publish Date</td>
+                            <th>Price</th>
+                            <th>Block Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of allUnblockedBooks">
+                            <th>{{book.bookId}}</th>
+                            <td class="text-secondary link underline-offset-2 cursor-pointer" [routerLink]="'/book/' + book.bookId">{{book.title}}</td>
+                            <td>{{book.category}}</td>
+                            <!-- <td>{{book.publisher}}</td> -->
+                            <td>{{book.publishedDate}}</td>
+                            <td>{{book.price| currency:'INR'}} </td>
+                            <td><button class="btn btn-outline btn-primary" (click)="subscribe(book.bookId)"><b>Subscribe</b></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

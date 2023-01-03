@@ -1,0 +1,31 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col lg:flex-row border shadow-lg rounded-lg border-base-200">
+      <div class="h-full">
+        <button class="btn btn-outline mb-10" onclick="window.history.go(-1)">⬅️ Go Back</button>
+        <img src="https://placeimg.com/260/400/arch" class="max-w-xs max-h-full rounded-lg shadow-2xl" />
+      </div>
+      <div class="h-full">
+        <h1 class="text-5xl font-bold pb-2">{{book!.title}}</h1>
+        <div class="py-4 w-full">
+          <p class="float-left">Book UID: </p>
+          <p class="float-right"><b>{{book!.bookId}}</b></p>
+        </div>
+        <div class="py-4 w-full">
+          <p class="float-left">Category: </p>
+          <p class="float-right badge badge-outline"><b>{{book!.category}}</b></p>
+        </div>
+        <div class="py-4 w-full">
+          <p class="float-left">Price: </p>
+          <p class="float-right"><b>{{book!.price | currency:'INR'}}</b></p>
+        </div>
+        <div class="py-4 w-full">
+          <p class="float-left">Publisher: </p>
+          <p class="float-right"><b>{{book!.publisher}}</b></p>
+        </div>
+        <div class="py-4 w-full">
+          <p class="float-left">Publisher: </p>
+          <p class="float-right"><b>{{book!.publishedDate|date}}</b></p>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center max-w-full">
+        <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-full w-fit" *ngIf="!previousBooksBySameUser?.length">No Books Found</div>
+        <div *ngIf="previousBooksBySameUser?.length">
+            <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-full w-fit">
+                <h1 class="text-5xl font-bold">List of Previous Books</h1>
+                <hr class="border-base-100 border-2">
+                <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                    quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                <br>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <!-- head -->
+                        <thead>
+                            <tr>
+                                <th>bookId</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Publisher</th>
+                                <td>Publish Date</td>
+                                <th>Price</th>
+                                <th>Block Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- row 1 -->
+                            <tr *ngFor="let book of previousBooksBySameUser">
+                                <th>{{book.bookId}}</th>
+                                <td>{{book.title}}</td>
+                                <td>{{book.category}}</td>
+                                <td>{{book.publisher}}</td>
+                                <td>{{book.publishedDate}}</td>
+                                <td>{{book.price| currency:'INR'}} </td>
+                                <td [ngClass]="{'text-success':!book.blocked,'text-error':book.blocked}"><b>{{book.blocked?"Blocked":"Not Blocked"}}</b></td>
+                                <td><button
+                                        [ngClass]="{'btn btn-outline': true,'btn-error':!book.blocked,'btn-info':book.blocked}"
+                                        (click)="toggleBlock($event,book)"><b>{{!book.blocked?"Block":"Unblock"}}</b></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

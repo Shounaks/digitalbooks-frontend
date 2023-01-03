@@ -1,0 +1,129 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center max-w-full h-full">
+        <div class="max-w-md shadow-lg border-base-100 p-4 border-2 rounded-box">
+            <h1 class="text-5xl font-bold">Update Book</h1>
+            <hr class="border-base-100 border-2">
+            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <br>
+            <div class="" id="createBookFormContainer">
+                <form [formGroup]="updateBookForm" (ngSubmit)="updateBook()">
+                    <div class="form-control">
+                        <label class="label" for="bookId"><span class="label-text">BookId</span></label>
+                        <input id="bookId" name="bookId" type="number" placeholder="Eg. '3221'"
+                            class="input input-bordered rounded-none rounded-t" formControlName="bookId" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['bookId'].invalid && updateBookForm.controls['bookId'].dirty">
+                            #️⃣ BookId is Invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="title"><span class="label-text">Title</span></label>
+                        <input id="title" name="title" type="text" placeholder="Eg. 'The Count of Monte Christo'"
+                            class="input input-bordered rounded-none rounded-t" formControlName="title" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['title'].invalid && updateBookForm.controls['title'].dirty">
+                            📕 Title is Invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="category"><span class="label-text">Category</span></label>
+                        <input id="category" name="category" type="text" placeholder="Eg: 'Mystery'"
+                            class="input input-bordered rounded-none rounded-t" formControlName="category" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['category'].invalid && updateBookForm.controls['category'].dirty">
+                            🗃️ Category is Invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="price"><span class="label-text">Price</span></label>
+                        <input id="price" name="price" type="number" placeholder="Eg. '250$'"
+                            class="input input-bordered rounded-none rounded-t" formControlName="price" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['price'].invalid && updateBookForm.controls['price'].dirty">
+                            💳 Price is Invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="authorId"><span class="label-text">AuthorId</span></label>
+                        <input id="authorId" name="authorId" type="text" placeholder="Eg. 232122"
+                            class="input input-bordered rounded-none rounded-t input-disabled"
+                            formControlName="authorId" [readonly]="true" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['authorId'].invalid && updateBookForm.controls['authorId'].dirty">
+                            💳 Author is Invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="publisher"><span class="label-text">Publisher</span></label>
+                        <input id="publisher" name="publisher" type="text" placeholder="Eg. 'Penguin Ltd.'"
+                            class="input input-bordered rounded-none rounded-t" formControlName="publisher" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['publisher'].invalid && updateBookForm.controls['publisher'].dirty">
+                            Publisher is invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="publishedDate"><span class="label-text">Publisher</span></label>
+                        <input id="publishedDate" name="publishedDate" type="date"
+                            class="input input-bordered rounded-none rounded-t" formControlName="publishedDate" />
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['publishedDate'].invalid && updateBookForm.controls['publishedDate'].dirty">
+                            Publish Date is invalid
+                        </span>
+                    </div>
+                    <div class="form-control">
+                        <label class="label" for="content"><span class="label-text">Content:</span></label>
+                        <textarea id="content" name="content" type="texta" class="input input-bordered rounded-none rounded-t" formControlName="content"></textarea>
+                        <span class="bg-base-300 text-red-400 w-full label-text-alt rounded-b"
+                            *ngIf="updateBookForm.controls['content'].invalid && updateBookForm.controls['content'].dirty">
+                            📅 Content Data is not supported
+                        </span>
+                    </div>
+                    <br>
+                    <div class="form-control">
+                        <div class="flex flex-row justify-around">
+                            <label for="blocked">UnBlocked</label><input type="checkbox" class="toggle" name="blocked"
+                                id="blocked" formControlName="blocked"><label for="blocked">Blocked</label>
+                        </div>
+                    </div>
+                    <div class="form-control mt-6">
+                        <button class="btn btn-active" [disabled]="updateBookForm.invalid">Update Book Entry</button>
+                    </div>
+                    <div>
+                        <p class="text-red-400" *ngIf="errorMessage">{{errorMessage}}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-screen">
+            <h1 class="text-5xl font-bold">List of Previous Books</h1>
+            <hr class="border-base-100 border-2">
+            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <br>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <!-- head -->
+                    <thead>
+                        <tr>
+                            <th>bookId</th>
+                            <th>Title</th>
+                            <th>Publisher</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- row 1 -->
+                        <tr *ngFor="let book of previousBooksBySameUser">
+                            <th>{{book.bookId}}</th>
+                            <td class="text-secondary link underline-offset-2 cursor-pointer" [routerLink]="'/book/' + book.bookId">{{book.title}}</td>
+                            <td>{{book.publisher}}</td>
+                            <td>{{book.price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

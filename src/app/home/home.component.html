@@ -1,0 +1,48 @@
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content w-100 text-center">
+        <div class="max-w-full">
+            <div class="shadow-lg border-base-100 p-4 border-2 rounded-box">
+                <h1 class="text-5xl font-bold">
+                    <p *ngIf="!user">Hello Guest</p>
+                    <p *ngIf="user" [textContent]="salutation()"></p>
+                </h1>
+                <hr class="border-base-100 border-2">
+                <!-- <p class="py-6"></p> -->
+                <div class="form-control">
+                    <div class="input-group">
+                        <input #searchQuery placeholder="Search…" class="input input-bordered glass w-full" type="text" name="searchBar" id="searchAll" (keyup.enter)="onEnter(searchQuery.value)">
+                        <button class="btn btn-square" (click)="onEnter(searchQuery.value)">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                    Your Query : {{searchQuery.value}}
+                </div>
+                <br>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <!-- head -->
+                        <thead>
+                            <tr>
+                                <th>bookId</th>
+                                <th>Title</th>
+                                <th>Publisher</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- row 1 -->
+                            <tr *ngFor="let book of queryResult">
+                                <th>{{book.bookId}}</th>
+                                <td class="text-secondary link underline-offset-2 cursor-pointer" [routerLink]="'/book/' + book.bookId">{{book.title}}</td>
+                                <td>{{book.publisher}}</td>
+                                <td>{{book.price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

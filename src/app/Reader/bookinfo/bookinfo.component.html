@@ -1,0 +1,46 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row border shadow-lg rounded-lg border-base-200">
+    <div class="h-full">
+      <button class="btn btn-outline mb-10" onclick="window.history.go(-1)">⬅️ Go Back</button>
+      <img src="https://placeimg.com/260/400/arch" class="max-w-xs max-h-full rounded-lg shadow-2xl" />
+    </div>
+    <div class="h-full">
+      <h1 class="text-5xl font-bold pb-2">{{bookSubscription.book.title}}</h1>
+      <div class="py-4 w-full">
+        <p class="float-left">Category: </p>
+        <p class="float-right badge badge-outline"><b>{{bookSubscription.book.category}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">Subscribed On: </p>
+        <p class="float-right"><b>{{bookSubscription.subscription.subscriptionDate|date}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">Book Unique Identification: </p>
+        <p class="float-right"><b>{{bookSubscription.book.bookId}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">Publisher: </p>
+        <p class="float-right"><b>{{bookSubscription.book.publisher}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">Published On: </p>
+        <p class="float-right"><b>{{bookSubscription.book.publishedDate | date}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">Price Paid: </p>
+        <p class="float-right"><b>{{bookSubscription.book.price | currency:'INR'}}</b></p>
+      </div>
+      <div class="py-4 w-full">
+        <p class="float-left">GST Added(8% on Printed Books): </p>
+        <p class="float-right"><b>{{bookSubscription.book.price * 0.08 | currency:'INR'}}</b></p>
+      </div>
+      <br><hr>
+      <div class="py-4 w-full">
+        <p class="float-left">Total Cost: </p>
+        <p class="float-right"><b>{{bookSubscription.book.price * 1.08 | currency:'INR'}}</b></p>
+      </div>
+      <div class="mb-40"></div>
+      <button class="btn btn-outline btn-info float-right h-full" [disabled]="bookSubscription.book.blocked" [routerLink]="'/bookInfo/'+ bookSubscription.subscription.id + '/' + bookSubscription.book.bookId + '/read'">Read</button>
+    </div>
+  </div>
+</div>
