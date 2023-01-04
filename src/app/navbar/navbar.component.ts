@@ -10,13 +10,13 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NavbarComponent {
   
-  user?:User;
   constructor(public loginService:LoginUserService,
     private cookieService: CookieService){ 
-    this.user = loginService.user;
   }
 
   flushCookies():void{
     this.cookieService.deleteAll();
+    this.loginService.user = null;
+    sessionStorage.removeItem('token');
   }
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { CreateBookComponent } from './Author/createbook/createbook.component';
@@ -17,6 +17,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { BookinfoComponent } from './Reader/bookinfo/bookinfo.component';
 import { ReadComponent } from './Reader/read/read.component';
 import { GeneralbookinfoComponent } from './generalbookinfo/generalbookinfo.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,9 @@ import { GeneralbookinfoComponent } from './generalbookinfo/generalbookinfo.comp
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

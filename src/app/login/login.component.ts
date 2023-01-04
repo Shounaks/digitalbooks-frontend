@@ -28,6 +28,7 @@ export class LoginComponent {
     this.userService.loginUser(this.loginForm.value).subscribe(
       success=>{ 
         this.userService.user = success;
+        sessionStorage.setItem('token',this.userService.user.token)
         this.cookieService.set("userData",JSON.stringify(success));
         this.router.navigate([''])
       },
