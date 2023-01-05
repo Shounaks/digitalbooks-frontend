@@ -55,7 +55,7 @@ export class BookService {
       .set("author", author)
       .set("price", price)
       .set("publisher", publisher);
-    return this.httpClient.get(this.bookUrl + "search", { params: params, headers: this.httpHeaderWithJwtToken() });
+    return this.httpClient.get(this.bookUrl + "search", { params: params });
   }
 
   toggleBookBlock(authorId: number, bookId: number, block: boolean): Observable<any> {
