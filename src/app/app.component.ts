@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginUserService } from './loginuser.service';
+import { LoginUserService } from './services/user-service/loginuser.service';
 
 @Component({
   selector: 'app-root',

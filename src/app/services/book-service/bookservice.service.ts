@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
-import { Book } from '../DTOs/Book';
-import { User } from '../DTOs/User';
-import { LoginUserService } from '../loginuser.service';
+import { Book } from '../../DTOs/Book';
+import { User } from '../../DTOs/User';
+import { LoginUserService } from '../user-service/loginuser.service';
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +68,11 @@ export class BookService {
     let retrieveUrl: string = this.bookUrl;
     return this.httpClient.get(retrieveUrl, { headers: this.httpHeaderWithJwtToken() });
   }
+  
+  retrieveAllUnblockedBooksWithoutJwtToken(): Observable<any> {
+    let retrieveUrl: string = this.bookUrl;
+    return this.httpClient.get(retrieveUrl);
+  }
 
   retrieveAllSubscribedBooks(): Observable<any> {
     let retrieveUrl: string = this.userUrl + "subscribe/" + parseInt(this.loginUserService.user!.id);
@@ -76,7 +81,7 @@ export class BookService {
 
   subscribeToBook(bookId: number): Observable<any> {
     let subscribeUrl: string = this.userUrl + "subscribe/" + bookId + "/" + parseInt(this.loginUserService.user!.id);
-    console.log(subscribeUrl)
+    // console.log(subscribeUrl)
     return this.httpClient.get(subscribeUrl, { headers: this.httpHeaderWithJwtToken() });
   }
 

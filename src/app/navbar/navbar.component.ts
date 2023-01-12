@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginUserService } from '../loginuser.service';
+import { LoginUserService } from '../services/user-service/loginuser.service';
 import { User } from '../DTOs/User';
 import { CookieService } from 'ngx-cookie-service';
 

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginUserService } from '../loginuser.service';
+import { NGXLogger } from 'ngx-logger';
+import { LoginUserService } from '../services/user-service/loginuser.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ export class RegisterComponent {
 
   constructor(
     private userService: LoginUserService,
-    private formBuilder: FormBuilder,private router: Router) { }
+    private formBuilder: FormBuilder,private router: Router,
+    private logger:NGXLogger) { }
 
   ngOnInit(): void {
     this.registerationForm = this.formBuilder.group({

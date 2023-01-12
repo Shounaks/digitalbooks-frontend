@@ -1,11 +1,12 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen bg-[url('/assets/book_wall.jpg')]">
     <div class="hero-content w-100 text-center">
         <div class="max-w-full">
-            <div class="shadow-lg border-base-100 p-4 border-2 rounded-box">
-                <h1 class="text-5xl font-bold">
+            <div class="shadow-lg border-base-100 p-4 border-2 rounded-box bg-base-200 opacity-95">
+                <h1 class="text-3xl font-bold">
                     <p *ngIf="!user">Hello Guest</p>
                     <p *ngIf="user" [textContent]="salutation()"></p>
                 </h1>
+                <span>Search for some books here...</span>
                 <hr class="border-base-100 border-2">
                 <!-- <p class="py-6"></p> -->
                 <div class="form-control">
@@ -17,10 +18,11 @@
                             </svg>
                         </button>
                     </div>
-                    Your Query : {{searchQuery.value}}
+                    <br *ngIf="searchQuery.value.length != 0">
+                    <span *ngIf="searchQuery.value.length != 0"> Your Searched for: {{searchQuery.value}} </span>
                 </div>
-                <br>
-                <div class="overflow-x-auto">
+                <br *ngIf="searchQuery.value.length != 0">
+                <div class="overflow-x-auto" *ngIf="searchQuery.value.length != 0">
                     <table class="table w-full">
                         <!-- head -->
                         <thead>

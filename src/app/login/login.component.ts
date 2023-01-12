@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { LoginUserService } from '../loginuser.service';
+import { LoginUserService } from '../services/user-service/loginuser.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { NGXLogger } from 'ngx-logger';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ export class LoginComponent {
     private userService:LoginUserService,
     private formBuilder:FormBuilder,
     private router: Router,
-    private cookieService: CookieService){}
+    private cookieService: CookieService,
+    private logger:NGXLogger){}
   
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,7 +35,7 @@ export class LoginComponent {
         this.router.navigate([''])
       },
       error=>{
-        console.log(error);
+        this.logger.warn(error);
         this.errorMessage = error.error.errorMessage;
       }
       );

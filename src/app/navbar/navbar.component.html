@@ -1,14 +1,17 @@
 <div class="navbar bg-base-100">
     <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl" [routerLink]='"/"'>DigitalBooks</a>
+        <a class="btn btn-ghost normal-case text-xl" [routerLink]='"/"'>
+            <img src="assets/icon.svg" alt="book" class="h-10 w-10">
+            DigitalBooks
+        </a>
     </div>
     <div class="navbar-center flex">
         <div *ngIf="loginService?.user" class="flex gap-10">
-            <p class="bold font-extrabold">Your Actions:</p>
-            <a class="link" [routerLink]="'/subscribe'">Your Subscriptions</a>
-            <a class="link" *ngIf="loginService.user?.authorUser" [routerLink]='"/createBook"'>Create A Book</a>
-            <a class="link" *ngIf="loginService.user?.authorUser" [routerLink]='"/updateBook"'>Edit A Book</a>
-            <a class="link" *ngIf="loginService.user?.authorUser" [routerLink]='"/blockBook"'>Block A Book</a>
+            <p class="bold font-extrabold p-2 w-auto">Your Actions:</p>
+            <a class="link hover:link-info hover:glass rounded-sm p-2 w-auto" [routerLink]="'user/subscribe'">Your Subscriptions</a>
+            <a class="link hover:link-info hover:glass rounded-sm p-2 w-auto" *ngIf="loginService.user?.authorUser" [routerLink]='"author/createBook"'>Create A Book</a>
+            <a class="link hover:link-info hover:glass rounded-sm p-2 w-auto" *ngIf="loginService.user?.authorUser" [routerLink]='"author/updateBook"'>Edit A Book</a>
+            <a class="link hover:link-info hover:glass rounded-sm p-2 w-auto" *ngIf="loginService.user?.authorUser" [routerLink]='"author/blockBook"'>Block A Book</a>
         </div>
     </div>
     <div class="navbar-end gap-4" *ngIf="!loginService.user">

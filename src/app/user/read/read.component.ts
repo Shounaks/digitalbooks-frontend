@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoginUserService } from 'src/app/loginuser.service';
-import { BookService } from 'src/app/services/bookservice.service';
+import { LoginUserService } from 'src/app/services/user-service/loginuser.service';
+import { BookService } from 'src/app/services/book-service/bookservice.service';
 
 @Component({
   selector: 'app-read',

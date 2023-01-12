@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginUserService } from 'src/app/loginuser.service';
-import { BookService } from 'src/app/services/bookservice.service';
+import { LoginUserService } from 'src/app/services/user-service/loginuser.service';
+import { BookService } from 'src/app/services/book-service/bookservice.service';
 import {BookSubscription} from 'src/app/DTOs/BookSubscription'
 import {Book} from 'src/app/DTOs/Book'
 import {Subscription} from 'src/app/DTOs/Subscription'

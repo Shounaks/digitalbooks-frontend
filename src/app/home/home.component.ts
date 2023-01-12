@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginUserService } from '../loginuser.service';
+import { LoginUserService } from '../services/user-service/loginuser.service';
 import { User } from '../DTOs/User';
-import { BookService } from '../services/bookservice.service';
+import { BookService } from '../services/book-service/bookservice.service';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent {
   user?:User;
   searchQuery:string = "";
   queryResult!: Array<any>;
-  constructor(public loginService:LoginUserService,public bookService:BookService){
+  constructor(public loginService:LoginUserService,public bookService:BookService,private logger:NGXLogger){
     this.user = loginService.user;
   }
   
@@ -28,7 +29,7 @@ export class HomeComponent {
         console.log(success)
         this.queryResult = success;
       },
-      error=>{console.log(error)}
+      error=>{this.logger.warn(error)}
     );
   }
 }

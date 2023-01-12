@@ -1,5 +1,5 @@
-<div class="hero min-h-screen bg-base-200">
-  <div class="hero-content flex-col lg:flex-row border shadow-lg rounded-lg border-base-200">
+<div class="hero min-h-screen bg-[url('/assets/book_wall.jpg')]">
+  <div class="hero-content flex-col lg:flex-row border shadow-lg rounded-lg border-base-200 bg-base-200 opacity-95">
     <div class="h-full">
       <button class="btn btn-outline mb-10" onclick="window.history.go(-1)">⬅️ Go Back</button>
       <img src="https://placeimg.com/260/400/arch" class="max-w-xs max-h-full rounded-lg shadow-2xl" />
@@ -40,7 +40,7 @@
         <p class="float-right"><b>{{bookSubscription.book.price * 1.08 | currency:'INR'}}</b></p>
       </div>
       <div class="mb-40"></div>
-      <button class="btn btn-outline btn-info float-right h-full" [disabled]="bookSubscription.book.blocked" [routerLink]="'/bookInfo/'+ bookSubscription.subscription.id + '/' + bookSubscription.book.bookId + '/read'">Read</button>
+      <button class="btn btn-outline btn-info float-right h-full" [disabled]="bookSubscription.book.blocked" [routerLink]="bookSubscription.book.bookId + '/read'">Read</button>
     </div>
   </div>
 </div>

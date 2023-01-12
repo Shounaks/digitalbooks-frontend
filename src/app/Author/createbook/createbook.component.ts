@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/DTOs/Book';
 import { User } from 'src/app/DTOs/User';
-import { LoginUserService } from 'src/app/loginuser.service';
-import { BookService } from 'src/app/services/bookservice.service';
+import { LoginUserService } from 'src/app/services/user-service/loginuser.service';
+import { BookService } from 'src/app/services/book-service/bookservice.service';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-createbook',
@@ -17,7 +18,8 @@ export class CreateBookComponent {
   previousBooksBySameUser!: Array<any>;
   constructor(private bookService:BookService,
     public userService:LoginUserService,
-    private formBuilder:FormBuilder){
+    private formBuilder:FormBuilder,
+    private logger:NGXLogger){
       this.user = userService.user;
     }
 
@@ -39,10 +41,10 @@ export class CreateBookComponent {
   createBook(){
     this.bookService.addBook(this.createBookForm.value).subscribe(
       success=>{
-        console.log(success);
+        // console.log(success);
         this.getAllBookByAuthor();
       },
-      error =>{console.log(error)}
+      error =>{this.logger.warn(error)}
     );
   }
 
@@ -51,7 +53,7 @@ export class CreateBookComponent {
       success =>{
         this.previousBooksBySameUser = success
       },
-      error => {console.log("Error Occured While Retrieving the books")}
+      error => {this.logger.warn("Error Occured While Retrieving the books:" + error)}
     );
   }
 }
