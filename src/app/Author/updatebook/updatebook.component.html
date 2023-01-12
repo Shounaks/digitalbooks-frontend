@@ -3,8 +3,8 @@
         <div class="max-w-md shadow-lg border-base-100 p-4 border-2 rounded-box bg-base-200">
             <h1 class="text-5xl font-bold">Update Book</h1>
             <hr class="border-base-100 border-2">
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p class="py-6">To update the book. <span class="underline">The Title should be Unique</span>. Please add
+                Title, Category, Price (in INR), Publisher Name, Date and content of the page. (255 Max length. Will need to increase in backend). </p>
             <br>
             <div class="" id="createBookFormContainer">
                 <form [formGroup]="updateBookForm" (ngSubmit)="updateBook()">
@@ -99,8 +99,7 @@
         <div class="max-w shadow-lg border-base-100 p-4 border-2 rounded-box h-screen bg-base-200 opacity-95">
             <h1 class="text-5xl font-bold">List of Previous Books</h1>
             <hr class="border-base-100 border-2">
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p class="py-6">Following is the List of previous books written by you. You can check the general information by clicking on <span class="text-secondary">Book Title</span>.</p>
             <br>
             <div class="overflow-x-auto">
                 <div class="text-xl font-bold text-slate-500" *ngIf="previousBooksBySameUser && previousBooksBySameUser.length === 0">No Books Added yet.</div>

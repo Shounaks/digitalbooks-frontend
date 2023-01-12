@@ -1,10 +1,9 @@
 <div class="hero min-h-screen bg-[url('/assets/book_wall.jpg')]">
     <div class="hero-content text-center">
-        <div class="max-w-md shadow-lg border-base-100 p-4 border-2 rounded-box bg-base-200">
+        <div class="max-w-md shadow-lg border-base-100 p-4 border-2 rounded-box bg-base-200 opacity-95">
             <h1 class="text-5xl font-bold">Register Here...</h1>
             <hr class="border-base-100 border-2">
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p class="py-6">Register to One of the leading Book Subscription Services on the internet. Get access to over 50,000,000+ books once the migration is completed.</p>
             <br>
             <div class="" id="registrationFormContainer">
                 <form [formGroup]="registerationForm" (ngSubmit)="registerUser()">
@@ -32,7 +31,7 @@
                     <br>
                     <div class="form-control">
                         <div class="flex flex-row justify-around">
-                            <label for="author">User</label><input type="checkbox" class="toggle" name="authorUser" id="authorUser" formControlName="authorUser"><label for="">Author</label>
+                            <label for="author" class="badge font-bold {{!registerationForm.controls['authorUser'].value?'badge-outline':''}}">User</label><input type="checkbox" class="toggle" name="authorUser" id="authorUser" formControlName="authorUser"><label for="" class="badge font-bold {{registerationForm.controls['authorUser'].value?'badge-outline':''}}">Author</label>
                         </div>
                     </div>
                     <div class="form-control mt-6">

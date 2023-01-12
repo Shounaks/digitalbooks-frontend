@@ -24,8 +24,8 @@ export class UpdatebookComponent {
     this.updateBookForm = this.formBuilder.group({
       bookId: ['', [Validators.required]],
       title: ['', [Validators.required, Validators.minLength(2)]],
-      category: ['', [Validators.minLength(2)]],
-      price: [0, [Validators.required, Validators.min(0)]],
+      category: ['', [Validators.minLength(2),Validators.pattern("^([0-9A-Za-z \-])+$")]],
+      price: [, [Validators.required, Validators.min(1)]],
       authorId: [parseInt(this.userService.user!.id), [Validators.required]],
       publisher: ['', [Validators.minLength(5)]],
       publishedDate: ['', []],
