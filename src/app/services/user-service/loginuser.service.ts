@@ -10,7 +10,9 @@ import { User } from '../../DTOs/User';
 export class LoginUserService {
   public user: any;
 
-  private authenticationURL = "http://localhost:8080/api/v1/digitalbooks/authentication/";
+  // private authenticationURL = "http://localhost:8080/api/v1/digitalbooks/authentication/";
+  private AWS_URL = "3.110.23.139";
+  private authenticationURL = "http://" + this.AWS_URL + ":8080/api/v1/digitalbooks/authentication/";
   private loginUrl = this.authenticationURL + "sign-in";
   private registerUrl = this.authenticationURL + "sign-up";
 

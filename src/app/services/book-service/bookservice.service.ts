@@ -9,7 +9,9 @@ import { LoginUserService } from '../user-service/loginuser.service';
   providedIn: 'root'
 })
 export class BookService {
-  private backendUrl = "http://localhost:8080/api/v1/digitalbooks/";
+  // private backendUrl = "http://localhost:8080/api/v1/digitalbooks/";
+  private AWS_URL = "3.110.23.139";
+  private backendUrl = "http://" + this.AWS_URL + ":8080/api/v1/digitalbooks/";
   private bookUrl = this.backendUrl + "books/";
   private authorUrl = this.backendUrl + "author/";
   private userUrl = this.backendUrl + "user/";
@@ -68,7 +70,7 @@ export class BookService {
     let retrieveUrl: string = this.bookUrl;
     return this.httpClient.get(retrieveUrl, { headers: this.httpHeaderWithJwtToken() });
   }
-  
+
   retrieveAllUnblockedBooksWithoutJwtToken(): Observable<any> {
     let retrieveUrl: string = this.bookUrl;
     return this.httpClient.get(retrieveUrl);
